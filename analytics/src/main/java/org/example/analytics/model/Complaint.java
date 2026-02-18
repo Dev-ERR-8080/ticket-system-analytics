@@ -33,6 +33,9 @@ public class Complaint {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(name = "resolved_at")
+    private LocalDateTime resolvedAt;
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
 
