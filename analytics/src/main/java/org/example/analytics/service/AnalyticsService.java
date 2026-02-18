@@ -4,11 +4,13 @@ import org.example.analytics.DTO.OverviewResponseDTO;
 import org.example.analytics.DTO.TopUserDTO;
 import org.example.analytics.DTO.TrendDTO;
 import org.example.analytics.repository.ComplaintRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Service
 public class AnalyticsService {
 
     private final ComplaintRepo complaintRepository;
