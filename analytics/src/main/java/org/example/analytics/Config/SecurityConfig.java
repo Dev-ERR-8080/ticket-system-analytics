@@ -1,4 +1,4 @@
-package org.example.analytics.config;
+package org.example.analytics.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

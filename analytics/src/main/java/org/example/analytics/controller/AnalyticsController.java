@@ -13,13 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/analytics")
+@RequiredArgsConstructor
 public class AnalyticsController {
 
     private final AnalyticsService analyticsService;
-
-    public AnalyticsController(AnalyticsService analyticsService) {
-        this.analyticsService = analyticsService;
-    }
 
     @GetMapping("/overview")
     public OverviewResponseDTO overview() {

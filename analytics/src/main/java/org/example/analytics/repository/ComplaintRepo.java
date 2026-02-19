@@ -21,6 +21,9 @@ public interface ComplaintRepo extends JpaRepository<Complaint, Long> {
     @Query("SELECT c.status, COUNT(c) FROM Complaint c GROUP BY c.status")
     List<Object[]> countGroupByStatus();
 
+    @Query("SELECT DATE(c.createdAt), COUNT(c) FROM Complaint c GROUP BY DATE(c.createdAt)")
+    List<Object[]> countDailyTrend();
+
     @Query(value = """
     SELECT AVG(EXTRACT(EPOCH FROM (resolved_at - created_at)) / 3600)
     FROM complaints
@@ -36,6 +39,9 @@ public interface ComplaintRepo extends JpaRepository<Complaint, Long> {
 
     @Query("SELECT c.block, COUNT(c) FROM Complaint c GROUP BY c.block")
     List<Object[]> countByBlock();
+
+    @Query("SELECT c FROM Complaint c WHERE c.status != 'RESOLVED' AND c.createdAt < :threshold")
+    List<Complaint> findSlaViolations(LocalDateTime threshold);
 
     @Query(value = """
         SELECT DATE(created_at) as day, COUNT(*)
